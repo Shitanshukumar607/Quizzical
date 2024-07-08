@@ -3,17 +3,17 @@ import Blobs from "./components/Blobs";
 import GameIntro from "./components/GameIntro";
 import "./index.css";
 function App() {
-  const [details, setDetails] = useState({
+  const [gameOptions, setGameOptions] = useState({
     amount: "5",
     category: "0",
     difficulty: "0",
     type: "0",
   });
 
-  console.log(details);
+  const [status, setStatus] = useState("notStarted");
 
   useEffect(() => {
-    callAPI(details);
+    callAPI(gameOptions);
   }, []);
 
   function handleChange(event) {
@@ -21,7 +21,7 @@ function App() {
 
     const { name, value } = event.target;
 
-    setDetails((prevState) => {
+    setGameOptions((prevState) => {
       return {
         ...prevState,
         [name]: value,
@@ -39,14 +39,22 @@ function App() {
       });
   }
 
+  function startGame() {
+    setStatus("started");
+    callAPI(gameOptions);
+  }
+
   return (
     <>
       <Blobs />
-      <GameIntro
-        onChange={handleChange}
-        data={details}
-        startGame={() => callAPI(details)}
-      />
+
+      {status === "notStarted" && (
+        <GameIntro
+          onChange={handleChange}
+          data={gameOptions}
+          startGame={startGame}
+        />
+      )}
     </>
   );
 }
