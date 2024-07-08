@@ -4,9 +4,10 @@ import GameIntro from "./components/GameIntro";
 import "./index.css";
 function App() {
   const [details, setDetails] = useState({
-    category: "",
-    difficulty: "easy",
     amount: "5",
+    category: "0",
+    difficulty: "0",
+    type: "0",
   });
 
   console.log(details);
@@ -30,7 +31,7 @@ function App() {
 
   function callAPI(param) {
     fetch(
-      `https://opentdb.com/api.php?amount=${param.amount}&category=27&difficulty=${param.difficulty}`
+      `https://opentdb.com/api.php?amount=${param.amount}&category=${param.category}&difficulty=${param.difficulty}&type=${param.type}`
     )
       .then((response) => response.json())
       .then((data) => {
