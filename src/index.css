@@ -3,3 +3,28 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+body {
+  background: #f5f7fb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  position: relative;
+}
+
+.blob-top {
+  position: absolute;
+  z-index: -1;
+  width: 40vw;
+  top: 0px;
+  right: 0;
+}
+
+.blob-bottom {
+  position: absolute;
+  z-index: -1;
+  width: 40vw;
+  bottom: 0;
+  left: 0;
+}
