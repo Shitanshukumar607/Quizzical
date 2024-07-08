@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,200..800;1,200..800&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -16,7 +19,7 @@ body {
 .blob-top {
   position: absolute;
   z-index: -1;
-  width: 40vw;
+  width: 25vw;
   top: 0px;
   right: 0;
 }
@@ -24,7 +27,71 @@ body {
 .blob-bottom {
   position: absolute;
   z-index: -1;
-  width: 40vw;
+  width: 25vw;
   bottom: 0;
   left: 0;
+}
+
+.game-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 25px;
+  margin: 20px;
+}
+
+.game-title {
+  font-family: Karla;
+  font-size: 50px;
+  font-weight: 700;
+  text-align: center;
+}
+
+.game-description {
+  font-family: Inter;
+  font-size: 25px;
+  font-weight: 400;
+  line-height: 19.36px;
+  text-align: center;
+  margin: 32px 0;
+}
+
+.selection-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-width: 800px;
+}
+
+.selection-container label {
+  font-size: 1.75em;
+  font-weight: 700;
+  font-family: Karla;
+}
+.selection-container select {
+  max-width: 400px;
+  width: 100%;
+  font-family: Karla;
+  border: 0;
+  border-radius: 0.25em;
+  box-shadow: 0 0 0.6em 0 rgba(0, 0, 0, 0.2);
+  color: #293264;
+  cursor: pointer;
+  height: 3em;
+  padding: 0 0.5em;
+  font-size: 1.5rem;
+}
+
+.start-game-btn {
+  background-color: #4d5b9e;
+  border: 0;
+  border-radius: 15px;
+  color: #f5f7fb;
+  cursor: pointer;
+  font-family: Inter, sans-serif;
+  font-size: 1.5em;
+  font-weight: 500;
+  height: 60px;
+  width: 190px;
+  z-index: 100;
 }
