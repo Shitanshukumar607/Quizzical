@@ -13,10 +13,11 @@ export default function GameIntro(props) {
           onChange={props.onChange}
         >
           <option value="">Any Category</option>
-          <option value="one">one</option>
-          <option value="two">two</option>
+          <option value="1">one</option>
+          <option value="2">two</option>
         </select>
       </label>
+      <button onClick={props.startGame}>Start Game</button>
     </section>
   );
 }
