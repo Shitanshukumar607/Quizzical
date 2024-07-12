@@ -1,4 +1,6 @@
-export default function shuffleArray(array, newElement) {
+import { decode } from "html-entities";
+
+export function shuffleArray(array, newElement) {
   array.push(newElement);
   let currentIndex = array.length;
   let temporaryValue, randomIndex;
@@ -11,6 +13,8 @@ export default function shuffleArray(array, newElement) {
     array[currentIndex] = array[randomIndex];
     array[randomIndex] = temporaryValue;
   }
+
+  array = array.map((arr) => decode(arr));
 
   return array;
 }
