@@ -1,28 +1,26 @@
 import "../index.css";
+import Question from "./Question";
 
 export default function GamePlaying(props) {
   console.log(props);
 
   const questionBlock = props.data.map((data, index) => {
-    return (
-      <div className="question-container" key={index}>
-        <p className="question">{data.question}</p>
-        <div className="options-div">
-          {data.all_answers.map((option, Index) => {
-            return (
-              <button
-                onClick={props.selectOption}
-                className="option-button"
-                key={Index}
-              >
-                {option}
-              </button>
-            );
-          })}
-        </div>
-      </div>
-    );
+    return <Question data={data} handleClick={props.handleClick} id={index} />;
   });
 
-  return <main>{questionBlock}</main>;
+  return (
+    <main>
+      {questionBlock}
+      <button
+        className={
+          props.allowedToCheckAnswers
+            ? "btn-check-answer ans-check-allowed"
+            : "btn-check-answer"
+        }
+        onClick={props.checkAnswers}
+      >
+        Check answers
+      </button>
+    </main>
+  );
 }
