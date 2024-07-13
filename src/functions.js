@@ -1,6 +1,7 @@
 import { decode } from "html-entities";
 
-export function shuffleArray(array, newElement) {
+// some functions that will be used constantly
+export function addOneAndShuffle(array, newElement) {
   array.push(newElement);
   let currentIndex = array.length;
   let temporaryValue, randomIndex;
