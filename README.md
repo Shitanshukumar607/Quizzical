@@ -10,21 +10,20 @@ Welcome to **Quizzical**, an exciting trivia game where users test their knowled
 
 To run Quizzical locally, follow these steps:
 
-    ```bash
-    git clone https://github.com/Shitanshukumar607/quizzical.git
-    cd quizzical
-    npm start
-    ```
+```bash
+git clone https://github.com/Shitanshukumar607/quizzical.git
+cd quizzical
+npm install
+npm start
+```
 
 The app should now be running on [http://localhost:3000](http://localhost:3000).
 
 ## Screenshots
 
-![Home Page](assets/game-start.png)
+![Home Page](public/assets/game-start.png)
 
-
-![Question Page](assets/game-result.png)
-
+![Question Page](public/assets/game-result.png)
 
 ## Features
 
