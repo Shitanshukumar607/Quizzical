@@ -24,10 +24,6 @@ function App() {
 
   const [allowedToCheckAnswers, setAllowedToCheckAnswers] = useState(false);
 
-  // useEffect(() => {
-  //   callAPI(gameOptions);
-  // }, []);
-
   useEffect(() => {
     console.log(Object.keys(selectedOptions));
     Object.keys(selectedOptions).length === 5 && setAllowedToCheckAnswers(true);
@@ -124,9 +120,9 @@ function App() {
       if (selectedOptions[i] === properData[i].correct_answer) {
         console.log("equal answer");
         correctAns++;
-        track.push("correct-answer.svg");
+        track.push("assets/correct-answer.svg");
       } else {
-        track.push("wrong-answer.svg");
+        track.push("assets/wrong-answer.svg");
       }
     }
     setNoOfCorrectAns(correctAns);

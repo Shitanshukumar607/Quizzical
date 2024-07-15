@@ -1,70 +1,51 @@
-# Getting Started with Create React App
+# Quizzical
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to **Quizzical**, an exciting trivia game where users test their knowledge by answering various trivia questions.
 
-## Available Scripts
+## What is Quizzical
 
-In the project directory, you can run:
+**Quizzical** is a trivia game built using React. This is the final solo project completely made from scratch as part of Scrimba's Learn React for Free Course.
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+To run Quizzical locally, follow these steps:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+    ```bash
+    git clone https://github.com/Shitanshukumar607/quizzical.git
+    cd quizzical
+    npm start
+    ```
 
-### `npm test`
+The app should now be running on [http://localhost:3000](http://localhost:3000).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
 
-### `npm run build`
+![Home Page](assets/game-start.png)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+![Question Page](assets/game-result.png)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Multiple Categories:** Trivia questions from various categories like Science, History, Sports, etc.
+- **Scoring System:** Earn points for each correct answer.
+- **Responsive Design:** Play seamlessly on both desktop and mobile devices.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Settings Navigation (Coming Soon):** Ability to go back to the home page and change settings.
+- **Dark Mode (Coming Soon):** Switch to a dark mode style for a better visual experience.
+- **Question Selection (Coming Soon):** Choose the number of questions you want to answer.
+- **Sounds (Coming Soon):** Enjoy sound effects for correct answers and more.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Technical Details
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+**Quizzical** utilizes several key React hooks and makes use of external APIs for trivia questions. Technologies used include:
 
-## Learn More
+![HTML](https://img.shields.io/badge/-HTML5-E34F26?logo=html5&logoColor=white)
+![CSS](https://img.shields.io/badge/-CSS3-1572B6?logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/-JavaScript-F7DF1E?logo=javascript&logoColor=black)
+![React](https://img.shields.io/badge/-React-61DAFB?logo=react&logoColor=black)
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Contributing
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+We welcome contributions! Fork the repository, create a branch for your feature, make your changes, and submit a pull request.

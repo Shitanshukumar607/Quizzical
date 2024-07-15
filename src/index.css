@@ -9,12 +9,14 @@
 
 body {
   background: #f5f7fb;
+}
+
+#root {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  position: relative;
-  margin-top: 50px;
+  overflow: scroll;
 }
 
 .blob-top {
