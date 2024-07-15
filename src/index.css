@@ -20,7 +20,7 @@ body {
 .blob-top {
   position: absolute;
   z-index: -1;
-  width: 25vw;
+  width: 20vw;
   top: 0px;
   right: 0;
 }
@@ -28,7 +28,7 @@ body {
 .blob-bottom {
   position: absolute;
   z-index: -1;
-  width: 25vw;
+  width: 20vw;
   bottom: 0;
   left: 0;
 }
@@ -37,6 +37,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
+  width: 100%;
   gap: 40px;
   margin: 20px;
 }
@@ -47,6 +48,7 @@ body {
   font-weight: 700;
   text-align: center;
   color: #293264;
+  width: 100%;
 }
 
 .game-description {
@@ -55,14 +57,16 @@ body {
   font-weight: 400;
   line-height: 19.36px;
   text-align: center;
-  /* margin: 32px 0; */
+  width: 100%;
 }
 
 .selection-container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-width: 800px;
+  width: 100%;
+  gap: 10%;
+  width: 700px;
 }
 
 .selection-container label {
@@ -70,6 +74,7 @@ body {
   font-weight: 700;
   font-family: Karla;
 }
+
 .selection-container select {
   max-width: 400px;
   width: 100%;
@@ -113,18 +118,22 @@ main {
 
 .question-container {
   /* background-color: red; */
+  /* flex-direction: column; */
   display: flex;
-  flex-direction: column;
+
+  align-items: center;
+  justify-content: space-between;
   width: 100%;
-  gap: 20px;
+  /* gap: 20px; */
   border-bottom: 0.8px solid #dbdef0;
 }
 
-.question {
+.question-text {
   color: #293264;
   font-family: Karla, sans-serif;
   font-size: 2rem;
   font-weight: bold;
+  margin-bottom: 2%;
 }
 
 .option-button {
@@ -172,4 +181,37 @@ main {
 
 .ans-check-allowed:active {
   box-shadow: inset 3px 3px 10px 0 rgba(0, 0, 0, 0.75);
+}
+
+.answer-check-img {
+  width: 40px;
+  height: 40px;
+  /* margin-right: 10px; */
+}
+
+.wrong-answer-option {
+  background-color: #f8bcbc;
+  opacity: 0.5;
+  border: 0;
+}
+
+.correct-answer-option {
+  background: #94d7a2;
+  opacity: 1;
+  border: 0;
+}
+
+.bottom-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+}
+
+.no-of-correct-ans {
+  font-family: Inter, sans-serif;
+  font-weight: 700;
+  font-size: 25px;
+  text-align: center;
+  color: #293264;
 }
