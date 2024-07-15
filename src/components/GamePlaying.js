@@ -4,23 +4,38 @@ import Question from "./Question";
 export default function GamePlaying(props) {
   console.log(props);
 
-  const questionBlock = props.data.map((data, index) => {
-    return <Question data={data} handleClick={props.handleClick} id={index} />;
+  const allQuestions = props.data.map((data, index) => {
+    return (
+      <Question
+        data={data}
+        saveAnswer={props.saveAnswer}
+        id={index}
+        answerTrack={props.answerTrack[index]}
+        status={props.status}
+      />
+    );
   });
 
   return (
     <main>
-      {questionBlock}
-      <button
-        className={
-          props.allowedToCheckAnswers
-            ? "btn-check-answer ans-check-allowed"
-            : "btn-check-answer"
-        }
-        onClick={props.checkAnswers}
-      >
-        Check answers
-      </button>
+      {allQuestions}
+      <div className="bottom-container">
+        {props.status === "completed" && (
+          <h3 className="no-of-correct-ans">
+            You scored {props.noOfCorrectAns}/5 correct answers
+          </h3>
+        )}
+        <button
+          className={
+            props.allowedToCheckAnswers
+              ? "btn-check-answer ans-check-allowed"
+              : "btn-check-answer"
+          }
+          onClick={props.checkAnswers}
+        >
+          {props.status === "playing" ? "Check answers" : "Play again"}
+        </button>
+      </div>
     </main>
   );
 }
