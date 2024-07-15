@@ -16,7 +16,8 @@ function App() {
     type: "0",
   });
 
-  const [status, setStatus] = useState("notStarted");
+  const [status, setStatus] = useState("notStarted"); // could be either "notStarted" , "playing" or "completed" only
+
   const [properData, setProperData] = useState([]);
 
   const [selectedOptions, setSelectedOptions] = useState({});
@@ -44,23 +45,21 @@ function App() {
         return response.json();
       })
       .then((data) => {
-        // setProperData(data.results);
         console.log(data);
         getProperData(data.results);
       });
   }
 
-  function getProperData(results) {
-    console.log(results);
+  function getProperData(rawData) {
+    console.log(rawData);
 
-    let returnObj = results.map((result) => {
+    let returnObj = rawData.map((data) => {
       return {
-        type: result.type,
-        question: decode(result.question),
-        correct_answer: decode(result.correct_answer),
+        question: decode(data.question),
+        correct_answer: decode(data.correct_answer),
         all_answers: addOneAndShuffle(
-          result.incorrect_answers,
-          result.correct_answer
+          data.incorrect_answers,
+          data.correct_answer
         ),
       };
     });
@@ -88,10 +87,14 @@ function App() {
     callAPI(gameOptions);
   }
 
-  function handleClick(event, option) {
+  function saveAnswer(event, option) {
     console.log(selectedOptions);
-    console.log(event);
+    console.log(event.target);
     console.log(option);
+
+    if (status !== "playing") {
+      return;
+    }
     setSelectedOptions((prevState) => {
       return { ...prevState, [event.target.id]: option };
     });
@@ -101,26 +104,39 @@ function App() {
   const [answerTrack, setAnswerTrack] = useState([]);
 
   function checkAnswers() {
+    if (status === "completed") {
+      return playAgain();
+    }
+
     if (Object.keys(selectedOptions).length !== 5) {
       return;
     }
     console.log("Checking answers");
+    setStatus("completed");
+
+    let correctAns = 0;
+    let track = [];
 
     for (let i = 0; i < 5; i++) {
       console.log(selectedOptions[i]);
       console.log(properData[i].correct_answer);
 
       if (selectedOptions[i] === properData[i].correct_answer) {
-        setNoOfCorrectAns(noOfCorrectAns + 1);
-        setAnswerTrack((prevState) => {
-          return [...prevState, true];
-        });
+        console.log("equal answer");
+        correctAns++;
+        track.push("correct-answer.svg");
       } else {
-        setAnswerTrack((prevState) => {
-          return [...prevState, false];
-        });
+        track.push("wrong-answer.svg");
       }
     }
+    setNoOfCorrectAns(correctAns);
+    setAnswerTrack(track);
+  }
+
+  function playAgain() {
+    setStatus("notStarted");
+    setSelectedOptions({});
+    setAllowedToCheckAnswers(false);
   }
 
   return (
@@ -134,12 +150,15 @@ function App() {
         />
       )}
 
-      {status === "playing" && (
+      {status !== "notStarted" && (
         <GamePlaying
           data={properData}
-          handleClick={handleClick}
+          saveAnswer={saveAnswer}
           allowedToCheckAnswers={allowedToCheckAnswers}
           checkAnswers={checkAnswers}
+          answerTrack={answerTrack}
+          status={status}
+          noOfCorrectAns={noOfCorrectAns}
         />
       )}
     </>
