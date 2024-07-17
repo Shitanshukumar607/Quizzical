@@ -9,7 +9,7 @@ export default function Question(props) {
     if (props.status !== "playing") {
       return;
     }
-    console.log(index);
+    // console.log(index);
     setSelectedOptions(props.data.all_answers[index]);
     props.saveAnswer(event, props.data.all_answers[index]);
   }
