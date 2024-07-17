@@ -10,7 +10,7 @@ import "./index.css";
 
 function App() {
   const [gameOptions, setGameOptions] = useState({
-    amount: "5",
+    amount: "10",
     category: "0",
     difficulty: "0",
     type: "0",
@@ -24,9 +24,25 @@ function App() {
 
   const [allowedToCheckAnswers, setAllowedToCheckAnswers] = useState(false);
 
+  const [noOfQuestionsToAnswers, setNoOfQuestionsToAnswers] = useState(
+    Number(gameOptions.amount)
+  );
+
+  const [noOfCurrentlyAnsweredQuestions, setNoOfCurrentlyAnsweredQuestions] =
+    useState(0);
+
   useEffect(() => {
-    console.log(Object.keys(selectedOptions));
-    Object.keys(selectedOptions).length === 5 && setAllowedToCheckAnswers(true);
+    setNoOfQuestionsToAnswers(Number(gameOptions.amount));
+  }, [status]);
+
+  useEffect(() => {
+    setNoOfCurrentlyAnsweredQuestions(Object.keys(selectedOptions).length);
+
+    console.log(noOfQuestionsToAnswers);
+    console.log(noOfCurrentlyAnsweredQuestions);
+
+    noOfCurrentlyAnsweredQuestions === noOfQuestionsToAnswers &&
+      setAllowedToCheckAnswers(true);
   }, [selectedOptions]);
 
   function callAPI(param) {
@@ -84,9 +100,9 @@ function App() {
   }
 
   function saveAnswer(event, option) {
-    console.log(selectedOptions);
-    console.log(event.target);
-    console.log(option);
+    // console.log(selectedOptions);
+    // console.log(event.target);
+    // console.log(option);
 
     if (status !== "playing") {
       return;
@@ -104,7 +120,8 @@ function App() {
       return playAgain();
     }
 
-    if (Object.keys(selectedOptions).length !== 5) {
+    if (noOfCurrentlyAnsweredQuestions !== noOfQuestionsToAnswers) {
+      console.log("not selected enough answers");
       return;
     }
     console.log("Checking answers");
@@ -113,7 +130,7 @@ function App() {
     let correctAns = 0;
     let track = [];
 
-    for (let i = 0; i < 5; i++) {
+    for (let i = 0; i < noOfQuestionsToAnswers; i++) {
       console.log(selectedOptions[i]);
       console.log(properData[i].correct_answer);
 
