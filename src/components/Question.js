@@ -48,7 +48,7 @@ export default function Question(props) {
         </div>
       </div>
       {props.status === "completed" && (
-        <img className="answer-check-img" src={props.answerTrack} />
+        <img className="answer-check-img" src={props.answerTrack} alt=""/>
       )}
     </div>
   );
