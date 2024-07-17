@@ -71,8 +71,6 @@ body {
   width: 100%;
   gap: 5%;
   max-width: 600px;
-  /* background-color: pink; */
-  /* padding: 0 5%; */
 }
 
 .selection-container label {
@@ -227,11 +225,7 @@ main {
 }
 
 @media (max-width: 570px) {
-
   .selection-container label {
     width: 120px;
   }
-
-
-
 }

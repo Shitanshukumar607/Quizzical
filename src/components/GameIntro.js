@@ -1,7 +1,20 @@
-import { categories, difficulties, questionTypes } from "../data";
+import {
+  categories,
+  difficulties,
+  questionTypes,
+  noOfQuestions,
+} from "../data";
 import "../index.css";
 
 export default function GameIntro(props) {
+  const noOfQuestionsElements = noOfQuestions.map((noOfQuestion, index) => {
+    return (
+      <option key={index} value={noOfQuestion.id}>
+        {noOfQuestion.name}
+      </option>
+    );
+  });
+
   const categoryElements = categories.map((category, index) => {
     return (
       <option key={index} value={category.id}>
@@ -32,6 +45,18 @@ export default function GameIntro(props) {
       <p className="game-description">
         Answer the questions and test your knowledge!
       </p>
+
+      <div className="selection-container">
+        <label htmlFor="number">Number of questions</label>
+        <select
+          name="amount"
+          id="number"
+          value={props.data.amount}
+          onChange={props.onChange}
+        >
+          {noOfQuestionsElements}
+        </select>
+      </div>
 
       <div className="selection-container">
         <label htmlFor="category">Category</label>

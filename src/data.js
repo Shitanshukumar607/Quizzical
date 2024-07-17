@@ -39,4 +39,11 @@ const questionTypes = [
   { id: "boolean", name: "True/False" },
 ];
 
-export { categories, difficulties, questionTypes };
+const noOfQuestions = [
+  {id: "5" , name: "5" },
+  {id : "10" , name: "10" },
+  {id : "15" , name: "15" },
+  {id : "20" , name: "20" },
+]
+
+export { categories, difficulties, questionTypes , noOfQuestions};
