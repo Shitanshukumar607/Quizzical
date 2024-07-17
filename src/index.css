@@ -9,7 +9,6 @@
 
 body {
   background: #f5f7fb;
-  /* overflow: scroll; */
 }
 
 #root {
@@ -17,13 +16,12 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  /* overflow: scroll; */
+  position: relative;
 }
 
 .blob-top {
   position: absolute;
   z-index: -1;
-  /* width: 20vw; */
   width: 20rem;
   max-width: 50vw;
   top: 0px;
@@ -33,7 +31,6 @@ body {
 .blob-bottom {
   position: absolute;
   z-index: -1;
-  /* width: 20vw; */
   width: 20rem;
   max-width: 50vw;
   bottom: 0;
@@ -72,14 +69,18 @@ body {
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  gap: 10%;
-  width: 600px;
+  gap: 5%;
+  max-width: 600px;
+  /* background-color: pink; */
+  /* padding: 0 5%; */
 }
 
 .selection-container label {
   font-size: 1.5em;
   font-weight: 700;
   font-family: Karla;
+  max-width: 220px;
+  min-width: 120px;
 }
 
 .selection-container select {
@@ -120,6 +121,7 @@ main {
   align-items: center;
   justify-content: center;
   gap: 10px;
+  padding: 5%;
 }
 
 .question-container {
@@ -222,4 +224,14 @@ main {
   font-size: 23px;
   text-align: center;
   color: #293264;
+}
+
+@media (max-width: 570px) {
+
+  .selection-container label {
+    width: 120px;
+  }
+
+
+
 }
