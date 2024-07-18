@@ -31,7 +31,7 @@ function App() {
     noOfCurrentlyAnsweredQuestions === noOfQuestionsToAnswers;
 
   function getProperData(rawData) {
-    console.log(rawData);
+    // console.log(rawData);
 
     let returnObj = rawData.map((data) => {
       return {
@@ -44,13 +44,13 @@ function App() {
       };
     });
 
-    console.log(returnObj);
+    // console.log(returnObj);
 
     setProperData(returnObj);
   }
 
   function handleChange(event) {
-    console.log(event.target.value);
+    // console.log(event.target.value);
 
     const { name, value } = event.target;
 
@@ -66,7 +66,7 @@ function App() {
     setStatus("fetchingData");
 
     let data = await callAPI(gameOptions);
-    console.log(data);
+    // console.log(data);
 
     if (data == []) {
       setErrorMessage(
@@ -100,10 +100,10 @@ function App() {
     }
 
     if (noOfCurrentlyAnsweredQuestions !== noOfQuestionsToAnswers) {
-      console.log("not selected enough answers");
+      // console.log("not selected enough answers");
       return;
     }
-    console.log("Checking answers");
+    // console.log("Checking answers");
     setStatus("completed");
 
     let correctAns = 0;
@@ -114,7 +114,7 @@ function App() {
       console.log(properData[i].correct_answer);
 
       if (selectedOptions[i] === properData[i].correct_answer) {
-        console.log("equal answer");
+        // console.log("equal answer");
         correctAns++;
         track.push("assets/correct-answer.svg");
       } else {
