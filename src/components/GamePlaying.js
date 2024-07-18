@@ -22,7 +22,8 @@ export default function GamePlaying(props) {
       <div className="bottom-container">
         {props.status === "completed" && (
           <h3 className="no-of-correct-ans">
-            You scored {props.noOfCorrectAns}/5 correct answers
+            You scored {props.noOfCorrectAns}/{props.noOfQuestionsToAnswers}{" "}
+            correct answers
           </h3>
         )}
         <button
