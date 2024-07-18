@@ -69,12 +69,12 @@ function App() {
     console.log(data);
 
     if (data == []) {
-      getProperData(data.results);
-      setStatus("playing");
-    } else {
       setErrorMessage(
         "The API doesn't have enough questions for your query. Refresh the website and try again."
       );
+    } else {
+      getProperData(data);
+      setStatus("playing");
     }
   }
 
