@@ -66,9 +66,9 @@ function App() {
     setStatus("fetchingData");
 
     let data = await callAPI(gameOptions);
-    // console.log(data);
+    console.log(data);
 
-    if (data == []) {
+    if (data.length === 0) {
       setErrorMessage(
         "It looks like we couldn't find enough questions for your quiz. Please try refreshing the page, adjust your questions settings and try again!"
       );
