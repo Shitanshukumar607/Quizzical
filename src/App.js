@@ -70,7 +70,7 @@ function App() {
 
     if (data == []) {
       setErrorMessage(
-        "The API doesn't have enough questions for your query. Refresh the website and try again."
+        "It looks like we couldn't find enough questions for your quiz. Please try refreshing the page, adjust your questions settings and try again!"
       );
     } else {
       getProperData(data);
