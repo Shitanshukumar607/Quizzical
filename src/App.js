@@ -3,47 +3,32 @@ import Blobs from "./components/Blobs";
 import GameIntro from "./components/GameIntro";
 import GamePlaying from "./components/GamePlaying";
 
-import { addOneAndShuffle } from "./functions.js";
+import { addOneAndShuffle, callAPI } from "./functions.js";
 import { decode } from "html-entities";
 
 import "./index.css";
 
 function App() {
   const [gameOptions, setGameOptions] = useState({
-    amount: "10",
+    amount: "5",
     category: "0",
     difficulty: "0",
     type: "0",
   });
 
-  const [status, setStatus] = useState("notStarted"); // could be either "notStarted" , "playing" or "completed" only
+  const [status, setStatus] = useState("notStarted"); // could be either "notStarted" , "playing" , "fetchingData" or "completed" only
 
   const [properData, setProperData] = useState([]);
 
   const [selectedOptions, setSelectedOptions] = useState({});
+
+  const [errorMessage, setErrorMessage] = useState(null);
 
   let noOfQuestionsToAnswers = Number(gameOptions.amount);
   let noOfCurrentlyAnsweredQuestions = Object.keys(selectedOptions).length;
 
   let allowedToCheckAnswers =
     noOfCurrentlyAnsweredQuestions === noOfQuestionsToAnswers;
-
-  function callAPI(param) {
-    fetch(
-      `https://opentdb.com/api.php?amount=${param.amount}&category=${param.category}&difficulty=${param.difficulty}&type=${param.type}`
-    )
-      .then((response) => {
-        console.log(response);
-        if (!response.ok) {
-          alert("try again after 5 seconds");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log(data);
-        getProperData(data.results);
-      });
-  }
 
   function getProperData(rawData) {
     console.log(rawData);
@@ -77,9 +62,20 @@ function App() {
     });
   }
 
-  function startGame() {
-    setStatus("playing");
-    callAPI(gameOptions);
+  async function startGame() {
+    setStatus("fetchingData");
+
+    let data = await callAPI(gameOptions);
+    console.log(data);
+
+    if (data == []) {
+      getProperData(data.results);
+      setStatus("playing");
+    } else {
+      setErrorMessage(
+        "The API doesn't have enough questions for your query. Refresh the website and try again."
+      );
+    }
   }
 
   function saveAnswer(event, option) {
@@ -146,7 +142,13 @@ function App() {
         />
       )}
 
-      {status !== "notStarted" && (
+      {status === "fetchingData" && (
+        <p className="fetching-data">
+          {errorMessage ? errorMessage : "Getting questions..."}
+        </p>
+      )}
+
+      {(status === "playing" || status === "completed") && (
         <GamePlaying
           data={properData}
           saveAnswer={saveAnswer}
