@@ -113,6 +113,17 @@ body {
   box-shadow: inset 1px 1px 5px 0 rgba(0, 0, 0, 0.3);
 }
 
+
+.fetching-data{
+  font-family: Karla;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+  color: #293264;
+  width: 100%;
+  margin: 5%;
+}
+
 main {
   display: flex;
   flex-direction: column;
