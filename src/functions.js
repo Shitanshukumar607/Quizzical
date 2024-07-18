@@ -19,3 +19,19 @@ export function addOneAndShuffle(array, newElement) {
 
   return array;
 }
+
+export async function callAPI({ amount, category, difficulty, type }) {
+  try {
+    const response = await fetch(
+      `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=${type}`
+    );
+
+    const data = await response.json();
+    console.log(data.results);
+
+    return data.results;
+    
+  } catch (error) {
+    console.error("Error fetching data:", error);
+  }
+}
