@@ -22,28 +22,11 @@ function App() {
 
   const [selectedOptions, setSelectedOptions] = useState({});
 
-  const [allowedToCheckAnswers, setAllowedToCheckAnswers] = useState(false);
+  let noOfQuestionsToAnswers = Number(gameOptions.amount);
+  let noOfCurrentlyAnsweredQuestions = Object.keys(selectedOptions).length;
 
-  const [noOfQuestionsToAnswers, setNoOfQuestionsToAnswers] = useState(
-    Number(gameOptions.amount)
-  );
-
-  const [noOfCurrentlyAnsweredQuestions, setNoOfCurrentlyAnsweredQuestions] =
-    useState(0);
-
-  useEffect(() => {
-    setNoOfQuestionsToAnswers(Number(gameOptions.amount));
-  }, [status]);
-
-  useEffect(() => {
-    setNoOfCurrentlyAnsweredQuestions(Object.keys(selectedOptions).length);
-
-    console.log(noOfQuestionsToAnswers);
-    console.log(noOfCurrentlyAnsweredQuestions);
-
-    noOfCurrentlyAnsweredQuestions === noOfQuestionsToAnswers &&
-      setAllowedToCheckAnswers(true);
-  }, [selectedOptions]);
+  let allowedToCheckAnswers =
+    noOfCurrentlyAnsweredQuestions === noOfQuestionsToAnswers;
 
   function callAPI(param) {
     fetch(
@@ -149,7 +132,7 @@ function App() {
   function playAgain() {
     setStatus("notStarted");
     setSelectedOptions({});
-    setAllowedToCheckAnswers(false);
+    allowedToCheckAnswers = false;
   }
 
   return (
@@ -172,6 +155,7 @@ function App() {
           answerTrack={answerTrack}
           status={status}
           noOfCorrectAns={noOfCorrectAns}
+          noOfQuestionsToAnswers={noOfQuestionsToAnswers}
         />
       )}
     </>
