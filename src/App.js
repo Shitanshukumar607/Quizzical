@@ -66,7 +66,7 @@ function App() {
     setStatus("fetchingData");
 
     let data = await callAPI(gameOptions);
-    console.log(data);
+    // console.log(data);
 
     if (data.length === 0) {
       setErrorMessage(
